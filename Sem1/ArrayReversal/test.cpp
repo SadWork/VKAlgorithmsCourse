@@ -72,10 +72,3 @@ TEST(ArrayReversalTest, FloatingPointNumbers)
     array_reversal(a);
     EXPECT_EQ(a, vector<double>({4.4, 3.3, 2.2, 1.1}));
 }
-
-// Основная функция для запуска тестов
-int main(int argc, char **argv)
-{
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

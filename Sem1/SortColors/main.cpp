@@ -1,12 +1,15 @@
-#include "swap_parts.h"
+#include "sort_colors.h"
+
+bool check(int x)
+{
+    return x == 0;
+}
 
 int main()
 {
-    int k;
-    cin >> k;
     vector<int> a;
     copy(istream_iterator<int>(cin), istream_iterator<int>(), back_inserter(a));
-    swap_parts(a, k);
+    sort_colors(a.begin(), a.end());
     for (auto &i : a)
     {
         cout << i << ' ';
