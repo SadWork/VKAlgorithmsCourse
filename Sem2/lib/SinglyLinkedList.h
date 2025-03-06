@@ -47,6 +47,7 @@ public:
         }
         bool operator==(const iterator &other) const { return node_ == other.node_; }
         bool operator!=(const iterator &other) const { return node_ != other.node_; }
+        Node *get_node() const { return node_; }
         T &operator*() const { return node_->value; }
 
     private:
@@ -125,6 +126,41 @@ public:
             ++fast;
         }
         return slow;
+    }
+
+    int erase(T value)
+    {
+        Node *dummy = new Node(0);
+        dummy->next = head_;
+
+        Node *prev{dummy}, *cur{head_};
+
+        int found = 0;
+        while (cur != nullptr)
+        {
+            Node *next = cur->next;
+            if (cur->value == value)
+            {
+                prev->next = next;
+                ++found;
+                delete cur;
+            }
+            else
+            {
+                prev = cur;
+            }
+            cur = next;
+        }
+
+        head_ = dummy->next;
+        delete dummy;
+
+        return found;
+    }
+
+    void set_head(Node *newHead)
+    {
+        head_ = newHead;
     }
 
     iterator begin() { return iterator(head_); }
